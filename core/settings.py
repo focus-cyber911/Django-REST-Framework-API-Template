@@ -7,6 +7,8 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-change-me-in-produc
 DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
+AUTH_USER_MODEL = "apps.User"
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",

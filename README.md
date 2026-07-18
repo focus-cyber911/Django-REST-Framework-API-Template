@@ -1,135 +1,86 @@
-<div align="center">
+# Django + REST Framework API Template
 
-# 🚀 Django REST Framework API Template
+REST API yaratish uchun tayyor Django template.
 
-**REST API yaratish uchun tayyor, minimal va kengaytiriladigan Django template**
+## Tech Stack
 
-![Django](https://img.shields.io/badge/Django-5.0-092E20?style=for-the-badge&logo=django&logoColor=white)
-![DRF](https://img.shields.io/badge/DRF-REST%20Framework-A30000?style=for-the-badge&logo=django&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+- **Django 5** — web framework
+- **Django REST Framework** — REST API
+- **SQLite** — ma'lumotlar bazasi (default)
+- **django-cors-headers** — CORS support
 
-</div>
+## Ishga tushirish
 
----
-
-## 📋 Mundarija
-
-- [Tech Stack](#-tech-stack)
-- [Loyiha strukturasi](#-loyiha-strukturasi)
-- [O'rnatish va ishga tushirish](#-ornatish-va-ishga-tushirish)
-- [API Endpointlar](#-api-endpointlar)
-- [Contributing](#-contributing)
-
----
-
-## 🛠 Tech Stack
-
-| Texnologiya | Vazifasi |
-|---|---|
-| **Django 5** | Web framework |
-| **Django REST Framework** | REST API qurish |
-| **SQLite** | Ma'lumotlar bazasi (default) |
-| **django-cors-headers** | CORS support |
-
----
-
-## 📁 Loyiha strukturasi
-
-```
-Default Project/
-├── core/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── asgi.py
-├── apps/
-│   └── users/
-│       ├── models.py
-│       ├── serializers.py
-│       ├── views.py
-│       ├── urls.py
-│       └── admin.py
-├── manage.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-## ⚡ O'rnatish va ishga tushirish
-
-### 1️⃣ Virtual environment yaratish
+### 1. Virtual environment yaratish
 
 ```bash
 python -m venv venv
-
-# Linux / Mac
-source venv/bin/activate
-
-# Windows
-venv\Scripts\activate
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate      # Windows
 ```
 
-### 2️⃣ Kutubxonalarni o'rnatish
+### 2. Kutubxonalarni o'rnatish
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Ma'lumotlar bazasini yaratish
+### 3. Ma'lumotlar bazasini yaratish
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 4️⃣ Admin yaratish *(ixtiyoriy)*
+### 4. Admin yaratish (ixtiyoriy)
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### 5️⃣ Serverni ishga tushirish
+### 5. Serverni ishga tushirish
 
 ```bash
 python manage.py runserver
 ```
 
-Server manzili 👉 **http://localhost:8000**
+Server `http://localhost:8000` da ishlaydi.
 
-### 6️⃣ API dokumentatsiya
+### 6. API dokumentatsiya
 
-Django REST Framework o'zining **browsable API** interfeysiga ega — brauzerda to'g'ridan-to'g'ri endpointlarni sinab ko'rish mumkin.
+Django REST Framework da browsable API mavjud:
 
----
+- **Users list:** `GET http://localhost:8000/api/v1/users/`
+- **User create:** `POST http://localhost:8000/api/v1/users/create/`
+- **User detail:** `GET http://localhost:8000/api/v1/users/{id}/`
+- **Admin panel:** `http://localhost:8000/admin/`
 
-## 🔌 API Endpointlar
+## Loyiha strukturasi
 
-| Method | Endpoint | Tavsifi |
-|:---:|---|---|
-| `GET` | `/api/v1/users/` | Barcha foydalanuvchilar ro'yxati |
-| `POST` | `/api/v1/users/create/` | Yangi foydalanuvchi yaratish |
-| `GET` | `/api/v1/users/{id}/` | Bitta foydalanuvchi ma'lumoti |
-| `GET` | `/admin/` | Admin panel |
+```
+Default Project/
++-- core/
+|   +-- settings.py
+|   +-- urls.py
+|   +-- wsgi.py
+|   +-- asgi.py
++-- apps/
+|   +-- users/
+|       +-- models.py
+|       +-- serializers.py
+|       +-- views.py
+|       +-- urls.py
+|       +-- admin.py
++-- manage.py
++-- requirements.txt
++-- README.md
+```
 
----
+## API Endpointlar
 
-## 🤝 Contributing
-
-Pull request va issue'lar mamnuniyat bilan qabul qilinadi. Katta o'zgarishlar uchun avval issue oching va muhokama qiling.
-
-1. Repository'ni fork qiling
-2. Yangi branch yarating (`git checkout -b feature/yangi-funksiya`)
-3. O'zgarishlarni commit qiling (`git commit -m 'Yangi funksiya qo'shildi'`)
-4. Branch'ni push qiling (`git push origin feature/yangi-funksiya`)
-5. Pull Request oching
-
----
-
-<div align="center">
-
-**⭐ Agar loyiha foydali bo'lsa, star bosishni unutmang!**
-
-</div>
+| Method | Endpoint                       | Tavsifi                |
+|--------|--------------------------------|------------------------|
+| GET    | `/api/v1/users/`               | Barcha foydalanuvchilar |
+| POST   | `/api/v1/users/create/`        | Yangi foydalanuvchi    |
+| GET    | `/api/v1/users/{id}/`          | Bitta foydalanuvchi    |
+| GET    | `/admin/`                      | Admin panel            |
